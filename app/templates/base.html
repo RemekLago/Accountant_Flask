@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to WEATHER PLANNER</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+</head>
+
+<body>
+    <section class="hero has-background-grey-light is-fullheight">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-start">
+                            <a href="{{ url_for('index') }}" class="navbar-item">
+                                Home
+                            </a>
+                            <a href="{{ url_for('history') }}" class="navbar-item">
+                                History
+                            </a>
+                            <a href="{{ url_for('sale') }}" class="navbar-item">
+                                Sale
+                            </a>
+                            <a href="{{ url_for('purchase') }}" class="navbar-item">
+                                Purchase
+                            </a>
+                            <a href="{{ url_for('payment') }}" class="navbar-item">
+                                Payment
+                            </a>
+                            <a href="{{ url_for('stock') }}" class="navbar-item">
+                                Stock
+                            </a>
+                             <a href="{{ url_for('saldo') }}" class="navbar-item">
+                                Saldo
+                            </a>
+                        </div>
+                        <div class="navbar-end">
+                            <a class="navbar-item">
+                                {{ today.strftime('%Y-%m-%d')}} 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <footer class="px-1 has-background-black">
+            <div class="content has-text-centered">
+                <br>
+                <p>
+                <strong>ACCOUNTANT</strong> by <strong>RemekLago</strong>.
+                </p>
+                <br>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>
