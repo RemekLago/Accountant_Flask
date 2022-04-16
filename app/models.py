@@ -25,6 +25,7 @@ class SaldoTable(db.Model):
 class HistoryTable(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
+    saldo = db.Column(db.Integer)
     product = db.Column(db.String(64))
     quantity = db.Column(db.Integer)
     price = db.Column(db.Integer)
