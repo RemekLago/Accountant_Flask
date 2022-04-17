@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <form method="POST" action="payment">
+    {{ form.hidden_tag() }}
+    <div class="columns is-centered">
+       <div class="column is-5">
+           <p class="bd-notification is-danger">Enter data of payment</p>
+            <br>
+            <div class="box is-center">
+                <p> Saldo </p>
+                <input class="input is-primary" type="number" name="saldo" value="{{saldo}}" placeholder="Saldo" required>
+            </div>
+            <div class="box is-center has-icons-right">
+                <p> Comment </p>
+                <input class="input is-link" type="text" name="comment" value="{{comment}}" placeholder="Comment" required>
+            </div>
+            <div>
+                <button class="button is-inline is-block is-info is-large">Submit
+                </button>
+            </div>
+        </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
