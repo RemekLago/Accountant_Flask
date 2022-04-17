@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="notification has-background-white">
+    <div class="title has-text-black title is-4">
+        <p>History account</p>
+    </div>
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th></th>
+            <th><abbr title="Id">Id</abbr></th>
+            <th><abbr title="Date">Date</abbr></th>
+            <th><abbr title="Activity">Activity</abbr></th>
+            <th><abbr title="Saldo">Saldo</abbr></th>
+            <th><abbr title="Product">Product</abbr></th>
+            <th><abbr title="Quantity">Quantity</abbr></th>
+            <th><abbr title="Price">Price</abbr></th>
+            <th><abbr title="Comment">Comment</abbr></th>
+          </tr>
+        </thead>
+      {% for idx in history %}
+        <tbody>
+          <tr> 
+            <td></td>
+            <td>{{ idx.id}}</td>
+            <td>{{ idx.date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ idx.name }}</td>
+            <td>{{ idx.saldo }} $</td>
+            <td>{{ idx.product }} </td>
+            <td>{{ idx.quantity }}</td>
+            <td>{{ idx.price }}  $</td>
+            <td>{{ idx.comment }} </td>
+          </tr>
+        </tbody>
+      {% endfor %}
+
+        <tfoot>
+        <tr>
+          <th></th>
+          <th><abbr title="Id">Id</abbr></th>
+          <th><abbr title="Date">Date</abbr></th>
+          <th><abbr title="Activity">Activity</abbr></th>
+          <th><abbr title="Saldo">Saldo</abbr></th>
+          <th><abbr title="Product">Product</abbr></th>
+          <th><abbr title="Quantity">Quantity</abbr></th>
+          <th><abbr title="Price">Price</abbr></th>
+          <th><abbr title="Comment">Comment</abbr></th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+  
+
+{% endblock %}
