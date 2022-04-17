@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <form method="POST" action="purchase" novalidate>
+    {{ form.hidden_tag() }}
+    <div class="columns is-centered">
+       <div class="column is-5">
+           <p class="bd-notification is-danger">Enter data of purchase</p>
+            <br>
+            <div class="box is-center">
+                <p> Product </p>
+                <input class="input is-primary" type="text" name="product" value="{{product}}" placeholder="Product" required>
+            </div>
+            <div class="box is-center has-icons-right">
+                <p> Quantity </p>
+                <input class="input is-link" type="number" name="quantity" value="{{quantity}}" placeholder="Quantity" required>
+            </div>
+            <div class="box is-center">
+                <p> Price </p>
+                <input class="input is-danger" type="number" name="price" value="{{price}}" placeholder="Price" required>
+            </div>
+            <div>
+                <button class="button is-inline is-block is-info is-large">Submit
+                </button>
+            </div>
+        </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
