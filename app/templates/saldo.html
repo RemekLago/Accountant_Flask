@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="notification has-background-white">
+    <div class="title has-text-black title is-4">
+        <p>Saldo account</p>
+    </div>
+      <table class="table is-fullwidth">
+        <thead>
+          <tr>
+            <th></th>
+            <th><abbr title="Id">Id</abbr></th>
+            <th><abbr title="Date">Date</abbr></th>
+            <th><abbr title="Saldo">Saldo</abbr></th>
+            <th><abbr title="Activity">Activity</abbr></th>
+            <th><abbr title="Income/Outcome">Income/Outcome</abbr></th>
+          </tr>
+        </thead>
+      {% for idx in saldo %}
+        <tbody>
+          <tr> 
+            <td></td>
+            <td>{{ idx.id}} $</td>
+            <td>{{ idx.date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ idx.saldo }} $</td>
+            <td>{{ idx.status }} </td>
+            <td>{{ idx.payment }} $</td>
+          </tr>
+        </tbody>
+      {% endfor %}
+
+        <tfoot>
+          <tr>
+            <th></th>
+            <th><abbr title="Id">Id</abbr></th>
+            <th><abbr title="Date">Date</abbr></th>
+            <th><abbr title="Saldo">Saldo</abbr></th>
+            <th><abbr title="Activity">Activity</abbr></th>
+            <th><abbr title="Income/Outcome">Income/Outcome</abbr></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+  
+
+{% endblock %}
