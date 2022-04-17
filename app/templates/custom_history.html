@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <form method="POST" action="custom_history">
+    {{ form.hidden_tag() }}
+    <div class="columns is-centered">
+       <div class="column is-5">
+           <p class="bd-notification is-danger">Enter period of time for account history</p>
+            <br>
+            <div class="box is-center">
+                <p> Date from ...</p>
+                <input class="input is-primary" type="date" name="period_from" value="{{period_from }}" placeholder="period_from">
+            </div>
+            <div class="box is-center has-icons-right">
+                <p> Date to ... </p>
+                <input class="input is-link" type="date" name="period_to" value="{{period_to }}" placeholder="period_to">
+            </div>
+            <div>
+                <button class="button is-inline is-block is-info is-large">Submit
+                </button>
+            </div>
+        </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
