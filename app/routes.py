@@ -124,7 +124,6 @@ def payment():
         saldo_last = (SaldoTable.query.filter(SaldoTable.id==n).all())[0].saldo
     form = SaldoForm()
     if form.validate_on_submit():
-        # db.session.query(SaldoTable).delete()
         if int(form.saldo.data) >= 0:
             payment2 = SaldoTable(
                 payment = form.saldo.data,
@@ -181,7 +180,6 @@ def custom_history_period():
     today = datetime.now().date()
     period_from = CustomHistoryTable.query.get(1).period_from
     period_to = CustomHistoryTable.query.get(1).period_to + timedelta(days = 1)
-    # history = HistoryTable.query.all()
     history = HistoryTable.query.filter((HistoryTable.date>=period_from) & (HistoryTable.date<=(period_to))).all()
     print(period_from)
     print(type(period_from))
