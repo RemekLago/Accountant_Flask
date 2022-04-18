@@ -19,9 +19,6 @@
                             <a href="{{ url_for('index') }}" class="navbar-item">
                                 Home
                             </a>
-                            <a href="{{ url_for('history') }}" class="navbar-item">
-                                History
-                            </a>
                             <a href="{{ url_for('sale') }}" class="navbar-item">
                                 Sale
                             </a>
@@ -31,16 +28,19 @@
                             <a href="{{ url_for('payment') }}" class="navbar-item">
                                 Payment
                             </a>
+                        </div>
+                        <div class="navbar-end">
+                            <a href="{{ url_for('saldo') }}" class="navbar-item">
+                                Saldo
+                            </a>
                             <a href="{{ url_for('stock') }}" class="navbar-item">
                                 Stock
                             </a>
-                             <a href="{{ url_for('saldo') }}" class="navbar-item">
-                                Saldo
+                            <a href="{{ url_for('history') }}" class="navbar-item">
+                                History
                             </a>
-                        </div>
-                        <div class="navbar-end">
-                            <a class="navbar-item">
-                                {{ today.strftime('%Y-%m-%d')}} 
+                            <a href="{{ url_for('custom_history') }}" class="navbar-item">
+                                Custom History
                             </a>
                         </div>
                     </div>
@@ -57,6 +57,8 @@
             <div class="content has-text-centered">
                 <br>
                 <p>
+                
+                <strong>{{ today.strftime('%Y-%m-%d')}}</strong> <br>
                 <strong>ACCOUNTANT</strong> by <strong>RemekLago</strong>.
                 </p>
                 <br>
