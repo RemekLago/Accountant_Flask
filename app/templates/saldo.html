@@ -5,6 +5,8 @@
   <div class="notification has-background-white">
     <div class="title has-text-black title is-4">
         <p>Saldo account</p>
+        <br>
+        <p> Current saldo: {{ current_saldo }} $</p>
     </div>
       <table class="table is-fullwidth">
         <thead>
@@ -21,7 +23,7 @@
         <tbody>
           <tr> 
             <td></td>
-            <td>{{ idx.id}} $</td>
+            <td>{{ idx.id}}</td>
             <td>{{ idx.date.strftime('%Y-%m-%d') }}</td>
             <td>{{ idx.saldo }} $</td>
             <td>{{ idx.status }} </td>
