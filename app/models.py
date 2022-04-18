@@ -34,3 +34,11 @@ class HistoryTable(db.Model):
 
     def __repr__(self):
         return '<HistoryTable {}>'.format(self.name)
+    
+class CustomHistoryTable(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    period_from = db.Column(db.DateTime)
+    period_to = db.Column(db.DateTime)
+
+    def __repr__(self):
+        return '<CustomHistoryTable {}>'.format(self.id)
