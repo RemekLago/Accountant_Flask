@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container">  
   <form method="POST" action="payment">
     {{ form.hidden_tag() }}
     <div class="columns is-centered">
        <div class="column is-5">
+            {% with messages = get_flashed_messages() %} 
+            {% if messages %} 
+            {% for message in messages %}
+                <div class="notification is-warning">
+                 <a>{{ message }}</a>   
+                </div>
+            {% endfor %} 
+            {% endif %} 
+            {% endwith %}  
            <p class="bd-notification is-danger">Enter data of payment</p>
             <br>
             <div class="box is-center">
