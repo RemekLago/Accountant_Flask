@@ -6,6 +6,15 @@
     {{ form.hidden_tag() }}
     <div class="columns is-centered">
        <div class="column is-5">
+            {% with messages = get_flashed_messages() %} 
+            {% if messages %} 
+            {% for message in messages %}
+                <div class="notification is-warning">
+                 <a>{{ message }}</a>   
+                </div>
+            {% endfor %} 
+            {% endif %} 
+            {% endwith %}  
            <p class="bd-notification is-danger">Enter period of time for account history</p>
             <br>
             <div class="box is-center">
