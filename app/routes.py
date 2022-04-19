@@ -9,6 +9,7 @@ from app.models import StockTable, SaldoTable, HistoryTable, CustomHistoryTable
 @app.route('/')
 @app.route('/index')
 def index():
+    """ Home page with menu"""
     today = datetime.now().date()
     n = len(SaldoTable.query.all())
     if n == 0:
@@ -19,6 +20,7 @@ def index():
 
 @app.route('/sale', methods=["GET", "POST"])
 def sale():
+    """ The page with the form to sell products that are on stock"""
     today = datetime.now().date()
     form = SaleForm()
     product_stock = StockTable.query.all()
@@ -69,6 +71,7 @@ def sale():
 
 @app.route('/purchase', methods=["GET", "POST"])
 def purchase():
+    """ The page with the form to purchase products and change stock for that product"""
     today = datetime.now().date()
     form = BuyForm()
     n = len(SaldoTable.query.all())
@@ -116,6 +119,7 @@ def purchase():
 
 @app.route('/payment', methods=["GET", "POST"])
 def payment():
+    """ The page with the form for payment and changes the balance account"""
     today = datetime.now().date()
     n = len(SaldoTable.query.all())
     if n == 0:
@@ -154,6 +158,7 @@ def payment():
 
 @app.route('/custom_history', methods=["GET", "POST"])
 def custom_history():
+    """ The page where users can enter the period of time to find account history in given parameters"""
     form = HistoryForm()
     today = datetime.now().date()
     ()
@@ -175,34 +180,47 @@ def custom_history():
         return redirect(url_for('custom_history_period'))
     return render_template('custom_history.html', title='Custom History', form=form, today=today)
 
-@app.route('/custom_history_period', methods=["GET", "POST"])
+
+@app.route('/history_manual/<period_from>/<period_to>')
+def history_manual(period_from, period_to):
+    """ The page with the history of the account in the period of time given by the user in url"""
+    today = datetime.now().date()
+    period_from = period_from.split('-')
+    period_to = period_to.split('-')
+    a = date(int(period_from[0]), int(period_from[1]), int(period_from[2]))
+    b = date(int(period_to[0]), int(period_to[1]), int(period_to[2])) + timedelta(days = 1)
+    history = HistoryTable.query.filter((HistoryTable.date>=a) & (HistoryTable.date<=(b))).all()
+
+    return render_template('history_manual.html', title='History Manual', today=today, history=history, period_from=period_from)
+
+@app.route('/custom_history_period')
 def custom_history_period():
+    """ The page with the history of the account in the period of time given by the user from the previous page """
     today = datetime.now().date()
     period_from = CustomHistoryTable.query.get(1).period_from
     period_to = CustomHistoryTable.query.get(1).period_to + timedelta(days = 1)
     history = HistoryTable.query.filter((HistoryTable.date>=period_from) & (HistoryTable.date<=(period_to))).all()
-    print(period_from)
-    print(type(period_from))
-    print(period_to)
-    print(history)
 
     return render_template('custom_history_period.html', title='Custom History', today=today, history=history)
 
 
 @app.route('/history', methods=["GET", "POST"])
 def history():
+    """ The page with the whole history of the account"""
     today = datetime.now().date()
     history = HistoryTable.query.all()
     return render_template('history.html', title='History', history=history, today=today)
 
 @app.route('/stock')
 def stock():
+    """ The page with the stock status"""
     today = datetime.now().date()
     stock = StockTable.query.all()
     return render_template('stock.html', title='Stock', stock=stock, today=today)
 
 @app.route('/saldo')
 def saldo():
+    """ The page with the account balance"""
     today = datetime.now().date()
     saldo = SaldoTable.query.all()
     n = len(SaldoTable.query.all())
