@@ -3,6 +3,7 @@ from app import db
 from datetime import datetime
 
 class StockTable(db.Model):
+    """The table with the stock status"""
     id = db.Column(db.Integer, primary_key=True)
     product = db.Column(db.String(64))
     quantity = db.Column(db.Integer)
@@ -13,6 +14,7 @@ class StockTable(db.Model):
         return '<StockTable {}>'.format(self.name)
     
 class SaldoTable(db.Model):
+    """The table with the whole history balance account, just amounts"""
     id = db.Column(db.Integer, primary_key=True)
     payment = db.Column(db.Integer)
     saldo = db.Column(db.Integer)
@@ -23,6 +25,7 @@ class SaldoTable(db.Model):
         return '<SaldoTable {}>'.format(self.saldo)
     
 class HistoryTable(db.Model):
+    """The table with the whole history of the account by day"""
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
     saldo = db.Column(db.Integer)
@@ -36,6 +39,7 @@ class HistoryTable(db.Model):
         return '<HistoryTable {}>'.format(self.name)
     
 class CustomHistoryTable(db.Model):
+    """The table with dates that the user put to show the custom history of the account"""
     id = db.Column(db.Integer, primary_key=True)
     period_from = db.Column(db.DateTime)
     period_to = db.Column(db.DateTime)
