@@ -71,7 +71,7 @@ def sale():
 
 @app.route('/purchase', methods=["GET", "POST"])
 def purchase():
-    """ The page with the form to purchase products and change stock for that product"""
+    """ The page with the form to purchase products and change stock for that product."""
     today = datetime.now().date()
     form = BuyForm()
     n = len(SaldoTable.query.all())
